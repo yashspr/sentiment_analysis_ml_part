@@ -3,7 +3,7 @@
 1. Install anaconda
 2. In terminal, navigate to this directory
 3. Run `conda env create -n sentiment_analysis -f ./environment.yml`
-4. Activate the environment by running `conda activate`
+4. Activate the environment by running `conda activate sentiment_analysis`
 5. Run this command `python -m spacy download en_core_web_sm`
 6. Type in terminal `set FLASK_APP=server.py`
 7. Then run `flask run`

@@ -49,7 +49,6 @@ dependencies:
     - chardet==3.0.4
     - click==7.1.1
     - cymem==2.0.3
-    - en-core-web-sm==2.2.5
     - fasttext==0.9.1
     - flask==1.1.2
     - idna==2.9

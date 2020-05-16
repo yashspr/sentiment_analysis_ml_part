@@ -7,13 +7,21 @@ from flask import request
 app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
-def hello_world():
+def classify():
 	try:
 		filename = request.form['filename']
 	except KeyError:
 		filename = "vivo.csv"
 
 	features, result = main.get_features_and_classification(filename)
+	final_features = {}
+
+	for feature in features.keys():
+		final_features[feature] = {
+			"related": features[feature],
+			"positives": str(result[result["category"] == feature]["sentiment"].value_counts()['Positive']),
+			"negatives": str(result[result["category"] == feature]["sentiment"].value_counts()['Negative'])
+		}
 	
 	result_json = []
 	for i, row in result.iterrows():
@@ -24,8 +32,9 @@ def hello_world():
 		})
 
 	final = {
-		"features": features,
-		"classification": result_json
+		"features": final_features,
+		"classification": result_json,
+		"productID": filename.split('.')[0]
 	}
 
 	return final

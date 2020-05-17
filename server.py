@@ -19,9 +19,17 @@ def classify():
 	for feature in features.keys():
 		final_features[feature] = {
 			"related": features[feature],
-			"positives": str(result[result["category"] == feature]["sentiment"].value_counts()['Positive']),
-			"negatives": str(result[result["category"] == feature]["sentiment"].value_counts()['Negative'])
 		}
+		
+		try:
+			final_features[feature]["positives"] = str(result[result["category"] == feature]["sentiment"].value_counts()['Positive'])
+		except KeyError:
+			final_features[feature]["positives"] = 0
+
+		try:
+			final_features[feature]["negatives"] = str(result[result["category"] == feature]["sentiment"].value_counts()['Negative'])
+		except KeyError:
+			final_features[feature]["negatives"] = 0
 	
 	result_json = []
 	for i, row in result.iterrows():

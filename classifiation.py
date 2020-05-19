@@ -13,7 +13,7 @@ def construct_rev_lookup(features):
 					
 	return bucket_lookup
 
-def classify(df, features, model, tfidf):
+def classify(df, features, model):
 	lookup = construct_rev_lookup(features)
 
 	features = []
@@ -54,8 +54,7 @@ def classify(df, features, model, tfidf):
 
 			if flag:
 				# Now we know the sentence contains only one feature and find sentiment of that
-				sent_tfidf = tfidf.transform([sent.text])
-				pred = model.predict(sent_tfidf)[0]
+				pred = model.predict([sent.text])[0]
 				features.append(cat)
 				sentences.append(sent.text)
 				sentiments.append(pred)

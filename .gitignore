@@ -3,3 +3,4 @@ __pycache__
 fasttext_model_cbow.bin
 model.joblib
 tfidf.joblib
+*.csv

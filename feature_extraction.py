@@ -43,7 +43,7 @@ def feature_extraction(df, ft_model, nlp):
             
     # Extracting Top Features
     
-    top2 = len(unique_nouns)*0.02
+    top2 = len(unique_nouns)*0.05
     top2 = int(top2)
     
     top_features = unique_nouns[0:top2]
@@ -88,7 +88,7 @@ def feature_extraction(df, ft_model, nlp):
                             features_bucket[often_occurring_noun] = []
                         features_bucket[often_occurring_noun].append(lesser_occurring_noun)
                         top_features_set.remove(lesser_occurring_noun)
-                        print(lesser_occurring_noun)
+                        # print(lesser_occurring_noun)
                     except BaseException as error:
                         print(error)
                         continue
@@ -106,6 +106,18 @@ def feature_extraction(df, ft_model, nlp):
 
             else:
                 top_features_to_add.discard(feature1)
+
+    top_features_to_add_list = list(top_features_to_add)
+
+    for feature1 in top_features_to_add_list:
+        for feature2 in top_features_to_add_list:
+            if feature1 in top_features_to_add and feature2 in top_features_to_add:
+                similarity =  cosine_similarity(ft_model.get_word_vector(feature1).reshape(1, -1), 
+                                                   ft_model.get_word_vector(feature2).reshape(1, -1))
+                if similarity[0][0] < 0.99 and similarity[0][0] > 0.64:
+                    feature_to_remove = min((unique_nouns[feature1], feature1), (unique_nouns[feature2], feature2))[1]
+                    # print((unique_nouns[feature1], feature1), (unique_nouns[feature2], feature2))
+                    top_features_to_add.remove(feature_to_remove)
 
     for feature in top_features_to_add:
         features_bucket[feature] = []

@@ -17,6 +17,7 @@ def classify(df, features, model):
 	lookup = construct_rev_lookup(features)
 
 	features = []
+	sub_categories = []
 	sentences = []
 	sentiments = []
 	
@@ -36,12 +37,14 @@ def classify(df, features, model):
 				continue
 				
 			cat = None
+			sub_cat = None
 			flag = True
 			
 			for token in sent:
 				if token.text in lookup:
 					if cat is None:
 						cat = lookup[token.text]
+						sub_cat = token.text
 						
 					elif cat is not None and lookup[token.text] != cat:
 						flag = False
@@ -56,10 +59,11 @@ def classify(df, features, model):
 				# Now we know the sentence contains only one feature and find sentiment of that
 				pred = model.predict([sent.text])[0]
 				features.append(cat)
+				sub_categories.append(sub_cat)
 				sentences.append(sent.text)
 				sentiments.append(pred)
 				
-	results_df = pd.DataFrame({'category': features, 'sentence': sentences, 'sentiment': sentiments})
+	results_df = pd.DataFrame({'category': features, 'sub_category': sub_categories, 'sentence': sentences, 'sentiment': sentiments})
 	no_cat_df = pd.DataFrame({'sentence': no_cat_sents})
 	more_than_one_df = pd.DataFrame({'sentences': more_than_one_sents})
 	

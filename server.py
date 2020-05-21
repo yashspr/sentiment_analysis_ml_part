@@ -35,7 +35,6 @@ def classify():
 	for i, row in result.iterrows():
 		result_json.append({
 			"category": row['category'],
-			"sub_category": row['sub_category'],
 			"sentence": row['sentence'],
 			"sentiment": row['sentiment']
 		})

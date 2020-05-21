@@ -33,10 +33,10 @@ def preprocess_text(txt, nlp):
 			tokens[i] = appos[token]
 			
 	txt = ' '.join(tokens)
-	txt = re.sub(r"[^a-zA-Z0-9.:;?!/\n]", " ", txt)
+	txt = re.sub(r"[^a-zA-Z0-9.,:;'?!/\n]", " ", txt)
 	txt = re.sub(r"\n", ".", txt)
+	txt = re.sub(r" ([.,:?;])", r"\1", txt)
 	txt = re.sub(r"([. ])\1{1,}", r"\1", txt)
-	txt = re.sub(r" ([.:?;])", r"\1", txt)
 	
 	return txt
 

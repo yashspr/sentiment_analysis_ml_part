@@ -26,7 +26,7 @@ scoring = ['accuracy', 'precision_macro', 'recall_macro']
 
 # normalizing exaggerated words
 def reduce_lengthening(text):
-	pattern = re.compile(r"(.)\1{2,}")
+	pattern = re.compile(r"([a-zA-Z])\1{2,}")
 	return pattern.sub(r"\1\1", text)
 
 def preprocess(txt, nlp):

@@ -15,7 +15,7 @@ def construct_spacy_obj(df, nlp):
 	return df
 
 def reduce_lengthening(text):
-	pattern = re.compile(r"(.)\1{2,}")
+	pattern = re.compile(r"([a-zA-Z])\1{2,}")
 	return pattern.sub(r"\1\1", text)
 
 def preprocess_text(txt, nlp):
@@ -33,7 +33,7 @@ def preprocess_text(txt, nlp):
 			tokens[i] = appos[token]
 			
 	txt = ' '.join(tokens)
-	txt = re.sub(r"[^a-zA-Z0-9.,:;'?!/\n]", " ", txt)
+	txt = re.sub(r"[^a-zA-Z0-9.,:;\-'?!/\n]", " ", txt)
 	txt = re.sub(r"\n", ".", txt)
 	txt = re.sub(r" ([.,:?;])", r"\1", txt)
 	txt = re.sub(r"([. ])\1{1,}", r"\1", txt)

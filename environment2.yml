@@ -7,7 +7,6 @@ dependencies:
   - certifi=2020.4.5.1
   - cycler=0.10.0
   - freetype=2.9.1
-  - icc_rt=2019.0.0
   - icu=58.2
   - intel-openmp=2020.0
   - joblib=0.14.1
@@ -38,10 +37,7 @@ dependencies:
   - six=1.14.0
   - sqlite=3.31.1
   - tornado=6.0.4
-  - vc=14.1
-  - vs2015_runtime=14.16.27012
   - wheel=0.34.2
-  - wincertstore=0.2
   - zlib=1.2.11
   - pip:
     - blis==0.4.1

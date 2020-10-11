@@ -9,7 +9,6 @@ colorama==0.4.1
 cycler==0.10.0
 cymem==2.0.3
 decorator==4.4.2
-en-core-web-sm==2.2.5
 fasttext==0.9.1
 Flask==1.1.2
 idna==2.9

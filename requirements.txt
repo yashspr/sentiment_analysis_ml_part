@@ -46,7 +46,6 @@ pyparsing==2.4.6
 pyspellchecker==0.5.4
 python-dateutil==2.8.1
 pytz==2019.3
-pywin32==227
 pyzmq==19.0.1
 requests==2.23.0
 scikit-learn==0.22.1

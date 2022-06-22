@@ -31,7 +31,7 @@ mkl-fft==1.0.15
 mkl-random==1.1.0
 mkl-service==2.3.0
 murmurhash==1.0.2
-numpy==1.18.1
+numpy==1.22.0
 pandas==1.0.3
 parso==0.7.0
 pickleshare==0.7.5

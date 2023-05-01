@@ -10,7 +10,7 @@ cycler==0.10.0
 cymem==2.0.3
 decorator==4.4.2
 fasttext==0.9.1
-Flask==1.1.2
+Flask==2.3.2
 idna==2.9
 ipykernel==5.2.1
 ipython==7.14.0

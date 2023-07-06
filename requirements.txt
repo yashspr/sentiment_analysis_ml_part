@@ -49,7 +49,7 @@ pytz==2019.3
 pyzmq==19.0.1
 requests==2.23.0
 scikit-learn==0.22.1
-scipy==1.4.1
+scipy==1.10.0
 sip==4.19.13
 six==1.14.0
 spacy==2.2.4

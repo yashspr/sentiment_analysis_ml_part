@@ -40,7 +40,7 @@ preshed==3.0.2
 prompt-toolkit==3.0.5
 pybind11==2.5.0
 pyenchant==3.0.1
-Pygments==2.6.1
+Pygments==2.15.0
 pylint==2.4.4
 pyparsing==2.4.6
 pyspellchecker==0.5.4
